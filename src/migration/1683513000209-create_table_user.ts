@@ -1,7 +1,6 @@
-import { MigrationInterface, QueryRunner } from "typeorm"
+import { MigrationInterface, QueryRunner } from 'typeorm';
 
 export class CreateTableUser1683513000209 implements MigrationInterface {
-
     public async up(queryRunner: QueryRunner): Promise<void> {
         queryRunner.query(`
         CREATE TABLE public.user(
@@ -28,13 +27,12 @@ export class CreateTableUser1683513000209 implements MigrationInterface {
         ALTER SEQUENCE public.user_id_seq OWNED BY public.user.id;
 
         ALTER TABLE ONLY public.user ALTER COLUMN id SET DEFAULT nextval('public.user_id_seq'::regClass);
-        `)
+        `);
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
         queryRunner.query(`
         DROP TABLE public.user;
-        `)
+        `);
     }
-
 }
